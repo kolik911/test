@@ -44,7 +44,6 @@ export default new Vuex.Store({
         const dataFromDB = await API.auth(data);
         context.commit("auth", dataFromDB);
       } catch (err) {
-        console.log(err);
         context.commit("error", err.message);
       }
     },
@@ -58,6 +57,9 @@ export default new Vuex.Store({
       } catch (err) {
         context.commit("error", err.message);
       }
+    },
+    clearError(context) {
+      context.commit("clearError", null);
     },
     async loadUsersList(context) {
       const data = await API.getListUsers({
@@ -76,6 +78,9 @@ export default new Vuex.Store({
       state.usersList = payload;
     },
     error(state, payload) {
+      state.error = payload;
+    },
+    clearError(state, payload) {
       state.error = payload;
     },
     logOut(state) {

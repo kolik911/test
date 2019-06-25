@@ -4,10 +4,10 @@
       <p>{{ error }}</p>
     </div>
     <form>
-      <input type="text" name v-model="username">
+      <input type="text" @focus="clearErrorMessage" v-model="username">
       <br>
       <br>
-      <input type="password" name v-model="password">
+      <input type="password" @focus="clearErrorMessage" v-model="password">
       <br>
       <br>
       <button @click="auth">login</button>
@@ -47,6 +47,9 @@ export default {
       const { username, password } = this;
       const data = { username, password };
       this.$store.dispatch("auth", data);
+    },
+    clearErrorMessage() {
+      this.$store.dispatch("clearError");
     }
   },
   created() {
