@@ -26,7 +26,8 @@ export default new Vuex.Store({
   state: {
     usersList: [],
     token: null,
-    key: null
+    key: null,
+    error: null
   },
   plugins: [vuexPersist.plugin],
   getters: {
@@ -43,6 +44,7 @@ export default new Vuex.Store({
         const dataFromDB = await API.auth(data);
         context.commit("auth", dataFromDB);
       } catch (err) {
+        console.log(err);
         context.commit("error", err.message);
       }
     },

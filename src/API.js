@@ -10,8 +10,7 @@ class API {
       body: JSON.stringify(data)
     });
     const content = await response.json();
-
-    if (!response.ok) throw new Error(content.info);
+    if (!response.ok) throw new Error(content.message);
 
     return content;
   }
