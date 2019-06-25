@@ -20,8 +20,8 @@ export default {
   name: "auth",
   data() {
     return {
-      username: "test@demo.webitel.com",
-      password: "T2eDYGfhy0rL3nW3"
+      username: "",
+      password: ""
     };
   },
   computed: {
